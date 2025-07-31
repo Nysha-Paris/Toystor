@@ -5,23 +5,15 @@ const renderBadge = () => {
   badge.innerText = cartLS.list().reduce((prev, curr) => prev + curr.quantity, 0)
 }
 
-const listenToAdd = (buttons) => {
-  buttons.forEach((button) => {
-    button.addEventListener('click', (event) => {
-      const { id, name, price, location } = event.currentTarget.dataset
-      if (cartLS.exists(id)) {
-        cartLS.quantity(id, 1)
-      } else {
-        cartLS.add({ id, name, price })
-      }
-      dataLayer.push({
-        event: 'addToCart',
-        item: { id, name, price },
-        location: location
-      })
-    })
-  })
-}
+<script>
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    'event': 'add_to_cart',
+    'product_name': '$product_name',
+    'product_id': '$product_id',
+    'product_price': $product_price,
+  });
+</script>
 
 const cartItemsListeners = () => {
   const addToCartButtons = document.querySelectorAll('.cart .add-to-cart')
