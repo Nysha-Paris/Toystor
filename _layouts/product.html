@@ -29,4 +29,13 @@ layout: default
       </div>
     </div>
   </div>
-</div>
+</div> 
+<script>
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    'event': 'product_page_viewed',
+    'product_name': '{{ page.name }}',
+    'product_id': '{{ page.identifier }}',
+   'product_price': {{ page.price }},
+  });
+</script>
